@@ -1,0 +1,18 @@
+These are several commands you will frequently use:
+(): optional 
+[]: should plug in values 
+
+1. To clone a repository
+git clone [url] (directory name)
+
+2. To retrieve updates to local repo
+git pull
+
+3. Update from local to git repository
+git add [file] || git add . 
+git commit -m "[descriptive message]"
+git push -u [remote] [branch name] || git push -u origin master
+
+
+** for more details **
+https://education.github.com/git-cheat-sheet-education.pdf
