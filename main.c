@@ -5,7 +5,7 @@ int main() {
     printf("Enter a temperature in Fahrenheit: ");
     int result = scanf("%lf", &degF);
     if(result == 1) {
-        printf("You entered b: %lf\n", degF);
+        printf("You entered: %lf\n", degF);
     } else {
         printf("Failed to read input\n");
     }
