@@ -1,3 +1,8 @@
+/* Exercise 8.03: Polygons and perimeters
+ * Alistair Moffat, May 2014
+ * Liam Saliba, December 2021
+ * (c) University of Melbourne */
+
 #include <assert.h>
 #include <math.h>
 #include <stdio.h>
