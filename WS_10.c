@@ -58,3 +58,60 @@ main(int argc, char** argv) {
 
     return 0;
 }
+
+/* Exercise 4: duplicate a single string. Since we don't know in advance how
+   long the string will be, we need to allocate the memory ourselves.*/
+char
+*string_dupe(char *s) {
+    /* strlen returns a size_t, and we add 1 for the null byte */
+    /* 1. create a pointer to the duplicate */
+    
+    /* 2. allocate memory */
+    
+    /* 3. It is good practice to check if malloc succeded */
+    
+    /* 4. Copy the string to the duplicate (We could use our own function here, but why bother?) */
+    
+    return duplicate;
+}
+
+/* Exercise 5: duplicates a set of strings. We use our previous function for
+   each individual string, but we must allocate more memory to point to them
+   all. */
+char
+**string_set_dupe(char **S) {
+    /* create a pointer to the array of strings */ 
+    
+    
+    /* get the number of strings in the set */
+
+   
+    /* add 1 to the length to hold the sentinal NULL pointer 
+    and allocate memory */
+
+    /* check if malloc succeded */
+    
+    /* Duplicate each string (use our function from exercise 4) */
+
+   
+    /* add a pointer sentinel */
+    duplicates[i] = NULL;
+    /* and return pointer to the array of pointers */
+    return duplicates;
+}
+
+/* Exercise 6: Frees all the memory used by the set of strings. Note, each 
+   string must be freed individually, and then S itself must be freed as well.
+   This gives us one call to free for every call to malloc, which is a good
+   sign. */
+void
+string_set_free(char **S) {
+    /* iterate through the array and free each string */
+   
+        /* Remember to set freed memory to NULL to prevent illegal accesses*/
+        
+    }
+    free(S);
+    
+    return;
+}
