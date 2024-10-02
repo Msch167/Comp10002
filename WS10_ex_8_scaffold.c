@@ -13,7 +13,9 @@ typedef int data_t;
    array which we will need to keep track of to ensure that we can allocate
    more memory if it gets full.*/
 typedef struct {
-    ... 
+    data_t *d;
+    int n; // position of the head 
+    int currsize; // current size of stack 
 } stack_t;
 
 stack_t *make_empty_stack();
@@ -66,17 +68,20 @@ main(int argc, char** argv) {
 stack_t
 *make_empty_stack() {
     /* allocate memory for the stack struct */
-    ...
+    stack_t *s;
+    s = (stack_t *) malloc(sizeof(*s));
+    /* check that memory allocation worked */
+    assert(s!=NULL);
     /* we have no items */
-    ...
+    s->n = 0;
     /* set our default initial size of the array */
-    ...
+    s->currsize = INITLEN;
     /* allocate memory for the stack itself */
     /* In general, it is best to get the size of variables rather than types,
        e.g calling sizeof(*(s->d)) instead of sizeof(data_t). Since data_t
        is defined as the type of object in the stack, this is probably ok.
        sizeof(int) would be bad practice though.*/
-    ...
+    s->d = (data_t *) malloc(sizeof(data_t)*s->currsize);
     return s;
 }
 
@@ -87,10 +92,14 @@ stack_t
 void
 push(stack_t *s, data_t data) {
     /* if the stack is full, double the size */
-    ...
+    if (s->n == s->currsize) {
         /* you might want to #define this 2, but it is probably ok as is */
-        ...
-    ...
+        (s->currsize) *= 2;
+        s->d = realloc(s->d,sizeof(data_t)*s->currsize);
+        assert(s->d!=NULL);
+    }
+    s->d[s->n] = data;
+    (s->n)++;
 }
 
 /* Pops the item off the head of the stack, so long as there are items to be
@@ -98,7 +107,10 @@ push(stack_t *s, data_t data) {
 data_t
 pop(stack_t *s) {
     /* check to see if the stack is empty */
-    ...
+    if (s->n>0) {
+        (s->n)--;
+        return s->d[s->n];
+    }
 
     printf("Tried to pop an empty stack!\n");
     /*This may or may not be an appropriate sentinal value, safer to use
