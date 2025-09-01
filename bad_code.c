@@ -13,8 +13,10 @@ void double_values(int arr[], int len) {
 }
 
 void stuff(int u[], int l) {
-    for (int k = 0; k < l; k++) {
+    double banana = 3.3;
+    for (int k = 1; k < l; k++) {
         u[k] += 10;
+        u[k-1] += banana;
     }
 }
 
